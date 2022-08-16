@@ -4,6 +4,7 @@ from os import remove
 
 
 def create_playlist():
+    # well done!
     playlist_name = input(f'What is your playlist name?').title()
     song = input(f'Insert the song name.')
     author = input(f'Insert the author name.')
@@ -16,6 +17,7 @@ def read_playlist():
     existent_playlist = input(f"Which playlist do you want to read?").title()
     while True:
         try:
+            # better to  return the playlist  from the function  and then you can print, add, etc.
             templist = load(existent_playlist)
             for file in templist:
                 print(file)
@@ -29,6 +31,7 @@ def add_music():
     existent_playlist = input(f'What is the list name that you want to add a music?')
     while True:
         try:
+            # good!
             templist = load(existent_playlist)
             song = input(f'Insert the song name.')
             author = input(f'Insert the author name.')
@@ -45,6 +48,7 @@ def add_podcast():
     existent_playlist = input(f"Which playlist do you want to add a podcast?").title()
     while True:
         try:
+            # good!
             templist = load(existent_playlist)
             author = input(f'Insert the podcast name.')
             episode = input(f'Insert the podcast episode.')
@@ -55,7 +59,6 @@ def add_podcast():
         except:
             print('Playlist does not exist!\nTry again')
             break
-
 
 def search_on_playlist(existent_playlist):
     found_items = []
@@ -77,6 +80,7 @@ def search_on_playlist(existent_playlist):
             print('Item does not exist!\n Try again')
     except:
         print('Playlist does not exist!\nTry again')
+
 
 
 def delete_item(existent_playlist):
@@ -106,6 +110,8 @@ def copy_playlist():
             playlist_1 = input(f'What is the first playlist do you want to add').title()
             playlist_2 = input(f'What is the second playlist do you want to add').title()
             name = input(f'What is the name of the new playlist').title()
+            # what happens if one playlist does not exist - i cannot copy?
+            # why not?
             templist1 = load(playlist_1)
             for file in templist1:
                 new_playlist.append(file)
@@ -115,6 +121,9 @@ def copy_playlist():
             save(new_playlist, name)
             for file in new_playlist:
                 print(file)
+            # this loop never ends. also i can add the same list twice
+            # which may be ok. but maybe check that the song is not double
+            # what if 2 different playlists have the same song? is it supposed to be added twice?
         except:
             print('One of the Playlists is not existent.')
             break
