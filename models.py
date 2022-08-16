@@ -5,6 +5,11 @@ class PlayItem:
         self._author = author.title()
         self._likes = 0
 
+    # so is there any way to give like?
+    # please add to the program a process like this:
+    # 1. user searches for playlist -> return playlist
+    # 2. on this playlist -> open another menu
+    # 3. this menu: show all songs, search for song, give like, remove song, add song
     @property
     def likes(self):
         return self._likes
@@ -34,6 +39,8 @@ class Music(PlayItem):
         return f'{self.author} - {self._song} - {self._rhythm}: Likes:{self.likes}'
 
     def search(self, item):
+        # maybe you can expand the search to: "item in self._song or item in self._rhythm..."
+        # this way i can search partial text too
         return item == self._song or item == self._rhythm or item == self.author
 
 
